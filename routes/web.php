@@ -12,7 +12,7 @@
 */
 
 Route::get('login','Auth\LoginController@showLoginForm');
-Route::get('login','Auth\LoginController@login');
+Route::post('login','Auth\LoginController@login');
 Route::get('logout','Auth\LoginController@logout');
 
 Route::group(['middleware' => 'auth'],function(){
