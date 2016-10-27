@@ -8,10 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>SchoolPhile Library Management System</title>
+    <title>@yield('title') - SchoolPhile Library Management System</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/jquery/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/font-awesome-4.6.3/css/font-awesome.min.css')}}">
 
     <!-- Scripts -->
     <script>
@@ -20,6 +22,18 @@
         ]); ?>
     </script>
 </head>
+<div class="modal" id="def-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" data-dismiss="modal">&times;</span>
+                    <div class="modal-head"></div>
+                </div>
+                <div class="modal-body">
+                </div>
+        </div>
+    </div>
+</div>
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -59,10 +73,11 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="#" onclick="showProfile()"><span class="fa fa-user"></span> Profile</a>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            <span class="fa fa-sign-out"></span> Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -76,11 +91,27 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <div class="container">
+            @if(\Auth::check())
+                @include('layouts.top')
+            @endif
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+
+    <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/jquery/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script>
+    function showProfile(){
+        $.get('{{url("/")}}/profile',function(data){
+            $('.modal-head').html("<h4><span class='fa fa-user'></span> Profile</h4>");
+            $('.modal-body').html(data);
+        });
+        $('#def-modal').modal("show");
+    }
+    </script>
 </body>
 </html>

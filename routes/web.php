@@ -17,6 +17,6 @@ Route::post('logout','Auth\LoginController@logout');
 
 Route::group(['middleware' => 'auth'],function(){
 
-    Route::get('/', 'HomeController@index')->name('home');
-
+    Route::get('/', 'SiteController@index')->name('home');
+    Route::get('/profile','SiteController@profile')->name('profile');
 });
