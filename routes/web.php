@@ -19,4 +19,7 @@ Route::group(['middleware' => 'auth'],function(){
 
     Route::get('/', 'SiteController@index')->name('home');
     Route::get('/profile','SiteController@profile')->name('profile');
+
+    Route::get('books','BookController@index')->name('books');
+    Route::post('books','BookController@add')->name('book.add');
 });

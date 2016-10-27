@@ -1,7 +1,7 @@
 <div class="top-panel">
     <span class="top-elements">
         <a href="{{url('/')}}">Home</a>
-        <a href="#">Books</a>
+        <a href="{{route('books')}}">Books</a>
         <a href="#">Lend Book</a>
         <a href="#">Borrowers</a>
         <a href="#"><span class="fa fa-cog"></span> Settings</a>

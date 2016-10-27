@@ -94,6 +94,11 @@
         <div class="container">
             @if(\Auth::check())
                 @include('layouts.top')
+                @if($errors)
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">{{$error}}<span class="close" data-dismiss="alert">&times;</span></div>
+                    @endforeach
+                @endif
             @endif
             @yield('content')
         </div>

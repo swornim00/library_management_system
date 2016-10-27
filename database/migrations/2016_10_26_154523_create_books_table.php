@@ -18,6 +18,7 @@ class CreateBooksTable extends Migration
             $table->string('name');
             $table->string('author');
             $table->integer('borrows');
+            $table->integer('number_of_copies');
             $table->integer('price');
             $table->timestamps();
         });
