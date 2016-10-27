@@ -8,13 +8,10 @@ class CreateBorrowsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-        Schema::create('borrows',function(Blueprint $table){
-
+        Schema::create('borrows', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('book_id')->unsigned();
             $table->foreign('book_id')->references('id')->on('books');
@@ -26,11 +23,9 @@ class CreateBorrowsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
-        Schema:dropIfExists('borrows');
+        Schema::dropIfExists('borrows');
     }
 }
