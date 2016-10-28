@@ -9,7 +9,7 @@
         @foreach ($books as $b)
         <tr>
             <td>{{$b->id}}</td>
-            <td>{{$b->name}}</td>
+            <td><a href="{{url('/')}}/book/{{$b->id}}">{{$b->name}}</a></td>
             <td>{{$b->author}}</td>
 
         </tr>

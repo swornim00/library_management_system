@@ -1,7 +1,7 @@
 <div class="top-panel">
     <span class="top-elements">
         <a href="{{url('/')}}"><span class="fa fa-home"></span> Home</a>
-        <a href=""><span class="fa fa-book"></span> Books</a>
+        <a href="{{url('books')}}"><span class="fa fa-book"></span> Books</a>
         <a href="#"><span class="fa fa-share"></span> Lend Book</a>
         <a href="#"><span class="fa fa-users"></span> Borrowers</a>
         <a href="#"><span class="fa fa-cog"></span> Settings</a>

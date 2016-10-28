@@ -35,4 +35,37 @@ class BookController extends Controller
         return \Redirect::to(route('books'));
 
     }
+
+    public function bookInfo($id){
+        $book = Books::where('id',$id)->first();
+        return $book;
+    }
+
+    public function editBook(Request $request){
+        $this->validate($request, array(
+            'name' => 'required|unique:books,name',
+            'name' => 'required',
+            'price' => 'required|integer',
+            'number_of_copies' => 'required|integer|',
+            'id' => 'required'
+        ));
+
+        Books::where('id' , $request->id)->update(array(
+            'name' => $request->name,
+            'author' => $request->author,
+            'price' => $request->price,
+            'number_of_copies' => $request->number_of_copies,
+        ));
+
+        return \Redirect::to(url('/book/'.$request->id));
+    }
+
+    public function view($id){
+        $book = Books::where('id',$id)->first();
+        $borrows = \App\Borrows::where('book_id', $book->id)->take(3)->get();
+        return \View::make('books.view')
+        ->with('book',$book)
+        ->with('borrows',$borrows);
+    }
+
 }
