@@ -31,6 +31,8 @@
                 </div>
                 <div class="modal-body">
                 </div>
+                <div class="modal-footer">
+                </div>
         </div>
     </div>
 </div>
@@ -94,6 +96,11 @@
         <div class="container">
             @if(\Auth::check())
                 @include('layouts.top')
+                @if($errors)
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">{{$error}}<span class="close" data-dismiss="alert">&times;</span></div>
+                    @endforeach
+                @endif
             @endif
             @yield('content')
         </div>
@@ -104,6 +111,7 @@
     <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/jquery/jquery-ui.min.js')}}"></script>
     <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/functions.js')}}"></script>
     <script>
     function showProfile(){
         $.get('{{url("/")}}/profile',function(data){

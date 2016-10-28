@@ -19,6 +19,7 @@ class BooksTableSeeder extends Seeder
             'author' => $faker->name,
             'borrows' => rand(0, 10),
             'price' => rand(150, 1000),
+            'number_of_copies' => rand(0,20),
         ));
         }
     }
