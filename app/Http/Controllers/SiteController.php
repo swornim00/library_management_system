@@ -13,11 +13,16 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('site.home');
     }
 
     public function profile()
     {
-        return view('profile');
+        return view('site.profile');
+    }
+
+    public function settings()
+    {
+        return \View::make('site.settings');
     }
 }

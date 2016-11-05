@@ -25,4 +25,6 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('book/{id}','BookController@view');
     Route::get('book/info/{id}','BookController@bookInfo');
     Route::post('/book/edit','BookController@editBook')->name('book.edit');
+
+    Route::get('settings','SiteController@settings')->name('settings');
 });
