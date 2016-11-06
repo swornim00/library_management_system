@@ -66,7 +66,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
+                          <li><a href="{{ url('/login') }}">Login</a></li>
+                          <li><a href="{{ url('/contact_us') }}">Contact Us</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,7 +106,18 @@
             @yield('content')
         </div>
     </div>
-
+    <br><br><br>
+    <div class="navbar navbar-fixed-bottom footer navbar-default">
+      <p class="footer-text pull-right">Copyright &copy; SchooPhile Tech 2016</p>
+    </div>
+    <style>
+      .footer{
+        padding:10px;
+      }
+      .footer-text{
+        font-weight: 700;
+      }
+    </style>
     <!-- Scripts -->
 
     <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
