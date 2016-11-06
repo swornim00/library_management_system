@@ -14,7 +14,7 @@
 Route::get('login','Auth\LoginController@showLoginForm');
 Route::post('login','Auth\LoginController@login');
 Route::post('logout','Auth\LoginController@logout');
-
+Route::get('contact_us','SiteController@contact_us');
 Route::group(['middleware' => 'auth'],function(){
 
     Route::get('/', 'SiteController@index')->name('home');

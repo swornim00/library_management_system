@@ -6,18 +6,17 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function contact_us(){
+        return \View::make('contact_us');
+    }
+
     public function index()
     {
-        return view('home');
+        return \View::make('home');
     }
 
     public function profile()
     {
-        return view('profile');
+        return \View::make('profile');
     }
 }
