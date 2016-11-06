@@ -28,4 +28,5 @@ Route::group(['middleware' => 'auth'],function(){
 
     Route::get('settings','SiteController@settings')->name('settings');
     Route::post('settings','SiteController@settings_update')->name('settings.update');
+    Route::post('/reset_all','SiteController@reset_all')->name('settings.reset_all');
 });

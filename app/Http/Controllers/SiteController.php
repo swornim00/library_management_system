@@ -25,4 +25,22 @@ class SiteController extends Controller
         $site = \DB::table('libraries')->get()->first();
         return \View::make('site.settings')->with('site',$site);
     }
+
+
+    public function reset_all(Request $request){
+      $this->validate($request,array(
+        'password' => 'required',
+      ));
+
+      if(\Hash::check($request->password,\Auth::user()->password)){
+        \DB::statement("SET foreign_key_checks = 0");
+        \DB::table('borrows')->truncate();
+        \DB::table('books')->truncate();
+        \DB::table('borrowers')->truncate();
+        return \Redirect::back()->withErrors(array("Everything Cleared!"));
+
+      }else{
+        return \Redirect::back()->withErrors(array("Wrong Password!"));
+      }
+    }
 }
