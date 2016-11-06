@@ -29,11 +29,23 @@
         <h4><span class="fa fa-check-circle"></span> Recent Borrows</h4>
     </div>
     <div class="panel-body">
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <th>Borrower's Name</th>
+            <th>Issued Date</th>
+            <th>Status</th>
+          </tr>
         @foreach($borrows as $borrow_event)
-
-            {{$borrow_event->borrowers['name']}}
-            <hr>
+          <tr>
+            <td>{{$borrow_event->borrowers['name']}}</td>
+            <td>{{substr($borrow_event->created_at,0,10)}}</td>
+            <td><div class="label label-danger">{{$borrow_event->status()}}</div></td>
+          </tr>
         @endforeach
+
+      </tbody>
+      </table>
     </div>
 </div>
 </div>
