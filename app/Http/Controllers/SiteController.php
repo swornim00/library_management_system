@@ -23,6 +23,7 @@ class SiteController extends Controller
 
     public function settings()
     {
-        return \View::make('site.settings');
+        $site = \DB::table('libraries')->get()->first();
+        return \View::make('site.settings')->with('site',$site);
     }
 }

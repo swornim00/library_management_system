@@ -27,4 +27,5 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/book/edit','BookController@editBook')->name('book.edit');
 
     Route::get('settings','SiteController@settings')->name('settings');
+    Route::post('settings','SiteController@settings_update')->name('settings.update');
 });
