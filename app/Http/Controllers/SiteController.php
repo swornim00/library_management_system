@@ -43,4 +43,21 @@ class SiteController extends Controller
         return \Redirect::back()->withErrors(array("Wrong Password!"));
       }
     }
+
+    public function settings_update(Request $request){
+      $this->validate($request, array(
+        'name' => 'required',
+        'address' => 'required',
+        'issue_interval' => 'numeric|required',
+        'admin_email' => 'required|email',
+      ));
+
+      \App\Library::where('id',1)->update(array(
+        'name' => $request->name,
+        'address' => $request->address,
+        'issue_interval' => $request->issue_interval,
+        'admin_email' => $request->admin_email,
+      ));
+      return \Redirect::back();
+    }
 }
