@@ -16,8 +16,8 @@ class CreateBorrowersTable extends Migration
         Schema::create('borrowers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('booksBorrowed');
-            $table->integer('booksReturned');
+            $table->bigInteger('contact_number');
+            $table->string('address');
             $table->integer('fine');
             $table->timestamps();
         });

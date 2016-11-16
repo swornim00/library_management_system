@@ -24,9 +24,17 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('books','BookController@add')->name('book.add');
     Route::get('book/{id}','BookController@view');
     Route::get('book/info/{id}','BookController@bookInfo');
-    Route::post('/book/edit','BookController@editBook')->name('book.edit');
+    Route::post('book/edit','BookController@editBook')->name('book.edit');
+
+    Route::get('borrowers','BorrowersController@index')->name('borrowers');
+    Route::post('borrowers','BorrowersController@add')->name('borrowers.add');
+
+
 
     Route::get('settings','SiteController@settings')->name('settings');
     Route::post('settings','SiteController@settings_update')->name('settings.update');
     Route::post('/reset_all','SiteController@reset_all')->name('settings.reset_all');
+
+    Route::get('/modal/delete/{db}/{id}', 'SiteController@delete');
+    Route::post('delete/', 'SiteController@deleteDo')->name('delete');
 });

@@ -16,8 +16,8 @@ class BorrowersTableSeeder extends Seeder
         foreach (range(0, 25) as $x) {
             Borrowers::create(array(
                 'name' => $faker->name,
-                'booksBorrowed' => rand(0, 20),
-                'booksReturned' => rand(0, 19),
+                'contact_number' => '9813'.rand(111111, 999999),
+                'address' => $faker->address,
                 'fine' => 0,
 
             ));

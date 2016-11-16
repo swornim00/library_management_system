@@ -61,11 +61,20 @@ class BookController extends Controller
     }
 
     public function view($id){
-        $book = Books::where('id',$id)->first();
-        $borrows = \App\Borrows::where('book_id', $book->id)->take(3)->get();
-        return \View::make('books.view')
-        ->with('book',$book)
-        ->with('borrows',$borrows);
+      $book = Books::where('id',$id)->first();
+      $borrows = \App\Borrows::where('book_id', $book->id)->take(5)->get();
+
+      return \View::make('books.view')
+      ->with('book',$book)
+      ->with('borrows',$borrows);
+
+    }
+
+
+
+
+    public function deleteBook($id){
+      return \View::make('books.delete')->with('id',$id);
     }
 
 }

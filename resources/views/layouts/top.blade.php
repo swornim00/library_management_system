@@ -4,8 +4,8 @@
 
         <a href="{{url('books')}}"><span class="fa fa-book"></span> Books</a>
         <a href="#"><span class="fa fa-share"></span> Lend Book</a>
-        <a href="#"><span class="fa fa-users"></span> Borrowers</a>
-        <a href="{{route('settings')}}"><span class="fa fa-cog"></span> Settings</a>
+        <a href="{{url('borrowers')}}"><span class="fa fa-users"></span> Borrowers</a>
+        <a href="{{url('settings')}}"><span class="fa fa-cog"></span> Settings</a>
     </span>
 </div>
 
@@ -22,6 +22,7 @@
 
 .top-elements a{
     padding:20px;
+    font-size:15px;
     color:#444;
 }
 

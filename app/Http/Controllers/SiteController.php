@@ -26,6 +26,13 @@ class SiteController extends Controller
         return \View::make('site.settings')->with('site',$site);
     }
 
+    public function delete($db, $id)
+    {
+      \Session::flash('did', $id);
+      \Session::flash('ddb', $db);
+
+      return \View::make('site.delete');
+    }
 
     public function reset_all(Request $request){
       $this->validate($request,array(
@@ -59,5 +66,25 @@ class SiteController extends Controller
         'admin_email' => $request->admin_email,
       ));
       return \Redirect::back();
+    }
+
+    public function deleteDo(Request $request)
+    {
+        if ($did = \Session::get('did') && $ddb = \Session::get('ddb')) {
+            $did = \Session::get('did'); // I don't know but the value of $did is 1 always when I use the $did variable from if condition above
+
+        if ($ddb == 'books') {
+            $redir_url = route('books');
+            \DB::delete('DELETE FROM `borrows` WHERE `book_id`= '.$did);
+        }elseif($ddb == 'borrowers'){
+          \DB::delete('DELETE FROM `borrows` WHERE `borrower_id`= '.$did);
+        }
+
+            \DB::delete('DELETE FROM `'.$ddb.'` WHERE `id` = '.$did);
+
+            return \Redirect::to($redir_url);
+        } else {
+            return \Redirect::back();
+        }
     }
 }

@@ -4,10 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>@yield('title') - SchoolPhile Library Management System</title>
 
     <!-- Styles -->
@@ -22,20 +18,33 @@
         ]); ?>
     </script>
 </head>
-<div class="modal" id="def-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <span class="close" data-dismiss="modal">&times;</span>
-                    <div class="modal-head"></div>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                </div>
-        </div>
+
+<div class="modal fade" id="def-modal">
+  <div class="modal-dialog">
+    <div class="modal-content" id="def-modal-content">
+      <div id="modalHeader" class="modal-header">
+      </div>
+      <div class="modal-body" id="modalBody">
+      </div>
+      <div class="modal-footer" id="modalFooter">
+      </div>
     </div>
+  </div>
 </div>
+<script>
+function closeModal(){
+  $('#default-modal').modal("hide");
+}
+
+function deleteModal(id,item){
+
+  $.get('{{url("/")}}//modal/delete/'+item+'/'+id,function(data){
+    $('#def-modal-content').html(data);
+  });
+
+  $('#def-modal').modal('show');
+}
+</script>
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -132,6 +141,8 @@
         });
         $('#def-modal').modal("show");
     }
+
+
     </script>
 </body>
 </html>

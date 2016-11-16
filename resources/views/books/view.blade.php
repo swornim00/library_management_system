@@ -18,7 +18,7 @@
     </div>
     <div class="panel-body">
         <a href="#" onclick ="showBookInfo({{$book->id}})" class="pull-left"><span class="fa fa-edit"></span> Edit</a>
-        <a href="#" onclick ="delete({{$book->id}})" class="pull-right"><span class="fa fa-trash"></span> Delete</a>
+        <a href="#" onclick ="deleteModal({{$book->id}},'books')" class="pull-right"><span class="fa fa-trash"></span> Delete</a>
     </div>
 </div>
 </div>
