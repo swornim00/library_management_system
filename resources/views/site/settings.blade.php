@@ -22,6 +22,8 @@
             <input class="form-control" name="address" value="{{$site->address}}" placeholder="Enter Library's address"><br>
             <label>Issue Interval:</label><br>
             <input class="form-control" name="issue_interval" value="{{$site->issue_interval}}" placeholder="Enter Issue Interval"><br>
+            <label>Fine Amount:</label><br>
+            <input class="form-control" name="fine_amount" value="{{$site->fine_amount}}" placeholder="Enter Fine Amount"><br>
             <label>Admin's Email:</label><br>
             <input class="form-control" name="admin_email" value="{{$site->admin_email}}" placeholder="Enter Admin's email"><br>
           </div>

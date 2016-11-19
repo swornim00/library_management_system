@@ -9,7 +9,7 @@
     <div class="panel">
 
       <div class="panel-heading">
-        <h3>Recent Borrowers</h3>
+        <h4>Recent Borrowers</h4>
       </div>
       <div class="panel-body">
         @include('borrowers.recent')
@@ -21,7 +21,7 @@
   <div class="col-sm-6">
     <div class="panel">
       <div class="panel-heading">
-        <h3>Add Borrowers</h3>
+        <h4>Add Borrowers</h4>
       </div>
       <div class="panel-body">
 

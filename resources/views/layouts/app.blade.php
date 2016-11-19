@@ -116,15 +116,18 @@ function deleteModal(id,item){
         </div>
     </div>
     <br><br><br>
-    <div class="navbar navbar-fixed-bottom footer navbar-default">
-      <p class="footer-text pull-right">Copyright &copy; SchooPhile Tech 2016</p>
+    <div class="footer">
+      <center>
+        <hr />
+        <p class="footer-text">Copyright &copy; SchooPhile Tech 2016</p>
+      </center>
     </div>
     <style>
       .footer{
-        padding:10px;
+        padding:20px;
       }
       .footer-text{
-        font-weight: 700;
+        font-weight: 400;
       }
     </style>
     <!-- Scripts -->

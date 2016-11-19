@@ -56,6 +56,7 @@ class SiteController extends Controller
         'name' => 'required',
         'address' => 'required',
         'issue_interval' => 'numeric|required',
+        'fine_amount' => 'numeric|required',
         'admin_email' => 'required|email',
       ));
 
@@ -63,6 +64,7 @@ class SiteController extends Controller
         'name' => $request->name,
         'address' => $request->address,
         'issue_interval' => $request->issue_interval,
+        'fine_amount' => $request->fien_amount,
         'admin_email' => $request->admin_email,
       ));
       return \Redirect::back();

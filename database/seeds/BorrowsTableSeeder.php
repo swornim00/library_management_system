@@ -13,6 +13,8 @@ class BorrowsTableSeeder extends Seeder
         foreach (range(0, 100) as $x) {
             Borrows::create(array(
                 'book_id' => rand(1, 10),
+                'lost' => false,
+                'cleared' => false,
                 'borrower_id' => rand(1, 14),
             ));
         }

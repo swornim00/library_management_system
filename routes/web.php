@@ -29,7 +29,11 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('borrowers','BorrowersController@index')->name('borrowers');
     Route::post('borrowers','BorrowersController@add')->name('borrowers.add');
 
-
+    Route::get('borrows','BorrowController@index');
+    Route::post('lend','BorrowersController@lend');
+    Route::post('clear','BorrowController@clear');
+    Route::post('lost','BorrowController@lost');
+    Route::post('fine_charged','BorrowController@fine_charged');
 
     Route::get('settings','SiteController@settings')->name('settings');
     Route::post('settings','SiteController@settings_update')->name('settings.update');

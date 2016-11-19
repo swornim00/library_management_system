@@ -17,7 +17,8 @@ class CreateLibrariesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('address');
-            $table->string('issue_interval');
+            $table->integer('issue_interval');
+            $table->integer('fine_amount');
             $table->string('admin_email');
             $table->timestamps();
         });

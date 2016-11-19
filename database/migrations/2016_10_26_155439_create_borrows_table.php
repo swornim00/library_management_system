@@ -14,8 +14,10 @@ class CreateBorrowsTable extends Migration
         Schema::create('borrows', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('book_id')->unsigned();
-            $table->foreign('book_id')->references('id')->on('books');
             $table->integer('borrower_id')->unsigned();
+            $table->boolean('lost');
+            $table->boolean('cleared');
+            $table->foreign('book_id')->references('id')->on('books');
             $table->foreign('borrower_id')->references('id')->on('borrowers');
             $table->timestamps();
         });

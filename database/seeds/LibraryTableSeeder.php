@@ -19,7 +19,8 @@ class LibraryTableSeeder extends Seeder
         Library::create(array(
             'name' => $faker->name,
             'address' => $faker->address,
-            'issue_interval' => rand(6,21),
+            'issue_interval' => rand(6,10),
+            'fine_amount' => rand(20,150),
             'admin_email' => $faker->unique()->safeEmail,
         ));
     }
