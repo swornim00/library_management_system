@@ -34,13 +34,13 @@ class BookController extends Controller
         return \Redirect::to(route('books'));
     }
 
-    public function bookInfo($id)
+    public function editBookView($id)
     {
-        $book = Books::where('id', $id)->first();
+        $book_info = Books::where('id', $id)->first();
 
-        return $book;
+        return \View::make('books.edit')
+      ->with('book_info', $book_info);
     }
-
     public function editBook(Request $request)
     {
         $this->validate($request, array(

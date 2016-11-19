@@ -6,7 +6,7 @@
 <div class="col-sm-12">
   <div class="panel">
     <div class="panel-heading">
-      <button class="btn btn-success pull-right">Lend a book</button>
+      <button onclick="lend()" class="btn btn-success pull-right">Lend a book</button>
       <h3>Total Recent Borrows</h3>
       <span class="pull-right">{{$borrows->links()}}</span>
     </div>
@@ -31,7 +31,7 @@
               Fine
             </th>
             <th>
-              Action
+            Action
             </th>
           </tr>
           @foreach($borrows as $borrow)
@@ -91,4 +91,12 @@
 
 </div>
 
+<script>
+  function lend(){
+    $.get("{{url('/')}}/lend",function(data){
+      $('#def-modal-content').html(data);
+    });
+    $('#def-modal').modal('show');
+  }
+</script>
 @endsection

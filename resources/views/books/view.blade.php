@@ -52,20 +52,10 @@
 </div>
 <script>
 function showBookInfo(id){
-    $.get("{{url('/')}}/book/info/"+id,function(data){
-        $('.modal-head').html("<h4><span class='fa fa-book'></span> Book's Information</h4>");
-
-        dataHTML = "<form method=\"POST\" action=\"{{route('book.edit')}}\" >";
-        dataHTML += "<label> Name: </label> " + "<input type=\"textbox\"  class=\"form-control\" name=\"name\" value=\""+data.name+"\">";
-        dataHTML += "<br><label> Author: </label> " + "<input type=\"textbox\"  class=\"form-control\" name=\"author\" value=\""+data.author+"\">";
-        dataHTML += "<br><label> Price: </label> " + "<input type=\"textbox\"  class=\"form-control\" name=\"price\" value=\""+data.price+"\">";
-        dataHTML += "<br><label> Number of Copies: </label> " + "<input type=\"textbox\"  class=\"form-control\" name=\"number_of_copies\" value=\""+data.number_of_copies+"\">";
-        dataHTML += "<br><label> Number of Borrows: </label> " +"<input type=\"textbox\"  class=\"form-control\" readonly value=\""+data.borrows+"\">";
-        dataHTML += "<input type='hidden' name='id' value="+id+">" ;
-        dataHTML += "<input type='hidden' name='_token' value=\"{{\Session::token()}}\">" ;
-        dataHTML += "<input type='submit' id='editButton' style=\"display:none\">" ;
-        $('.modal-body').html(dataHTML);
-        $('.modal-footer').html("<button onclick=\"editBookInfo()\" class='btn btn-info'><span class='fa fa-edit'></span> Edit</button></form>")
+    $.get("{{url('/')}}/book/edit/"+id,function(dataHTML){
+        $('#modalHeader').html("<h4><span class='fa fa-book'></span> Book's Information</h4>");
+        $('#modalBody').html(dataHTML);
+        $('#modalFooter').html("<button onclick=\"editBookInfo()\" class='btn btn-info'><span class='fa fa-edit'></span> Edit</button></form>")
     });
     $('#def-modal').modal("show");
 }
