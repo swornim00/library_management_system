@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    public function contact_us(){
+    public function contact_us()
+    {
         return \View::make('site.contact_us');
     }
 
@@ -23,36 +24,39 @@ class SiteController extends Controller
     public function settings()
     {
         $site = \DB::table('libraries')->get()->first();
-        return \View::make('site.settings')->with('site',$site);
+
+        return \View::make('site.settings')->with('site', $site);
     }
 
     public function delete($db, $id)
     {
-      \Session::flash('did', $id);
-      \Session::flash('ddb', $db);
+        \Session::flash('did', $id);
+        \Session::flash('ddb', $db);
 
-      return \View::make('site.delete');
+        return \View::make('site.delete');
     }
 
-    public function reset_all(Request $request){
-      $this->validate($request,array(
+    public function reset_all(Request $request)
+    {
+        $this->validate($request, array(
         'password' => 'required',
       ));
 
-      if(\Hash::check($request->password,\Auth::user()->password)){
-        \DB::statement("SET foreign_key_checks = 0");
-        \DB::table('borrows')->truncate();
-        \DB::table('books')->truncate();
-        \DB::table('borrowers')->truncate();
-        return \Redirect::back()->withErrors(array("Everything Cleared!"));
+        if (\Hash::check($request->password, \Auth::user()->password)) {
+            \DB::statement('SET foreign_key_checks = 0');
+            \DB::table('borrows')->truncate();
+            \DB::table('books')->truncate();
+            \DB::table('borrowers')->truncate();
 
-      }else{
-        return \Redirect::back()->withErrors(array("Wrong Password!"));
-      }
+            return \Redirect::back()->withErrors(array('Everything Cleared!'));
+        } else {
+            return \Redirect::back()->withErrors(array('Wrong Password!'));
+        }
     }
 
-    public function settings_update(Request $request){
-      $this->validate($request, array(
+    public function settings_update(Request $request)
+    {
+        $this->validate($request, array(
         'name' => 'required',
         'address' => 'required',
         'issue_interval' => 'numeric|required',
@@ -60,14 +64,15 @@ class SiteController extends Controller
         'admin_email' => 'required|email',
       ));
 
-      \App\Library::where('id',1)->update(array(
+        \App\Library::where('id', 1)->update(array(
         'name' => $request->name,
         'address' => $request->address,
         'issue_interval' => $request->issue_interval,
         'fine_amount' => $request->fien_amount,
         'admin_email' => $request->admin_email,
       ));
-      return \Redirect::back();
+
+        return \Redirect::back();
     }
 
     public function deleteDo(Request $request)
@@ -78,8 +83,8 @@ class SiteController extends Controller
         if ($ddb == 'books') {
             $redir_url = route('books');
             \DB::delete('DELETE FROM `borrows` WHERE `book_id`= '.$did);
-        }elseif($ddb == 'borrowers'){
-          \DB::delete('DELETE FROM `borrows` WHERE `borrower_id`= '.$did);
+        } elseif ($ddb == 'borrowers') {
+            \DB::delete('DELETE FROM `borrows` WHERE `borrower_id`= '.$did);
         }
 
             \DB::delete('DELETE FROM `'.$ddb.'` WHERE `id` = '.$did);

@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use \App\Books;
+use App\Books;
 
 class BookController extends Controller
 {
-
     public function index()
     {
-        $books = Books::orderBy('id','desc')->paginate(7);
-        return \View::make('books.index')->with('books',$books);
+        $books = Books::orderBy('id', 'desc')->paginate(7);
+
+        return \View::make('books.index')->with('books', $books);
     }
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         $this->validate($request, array(
             'book_name' => 'required|unique:books,name',
             'author_name' => 'required',
@@ -24,33 +23,35 @@ class BookController extends Controller
             'number_of_copies' => 'required|integer|',
         ));
 
-        $book = new Books;
+        $book = new Books();
         $book->name = $request->book_name;
         $book->author = $request->author_name;
         $book->price = $request->book_price;
-        $book->borrows = 0 ;
+        $book->borrows = 0;
         $book->number_of_copies = $request->number_of_copies;
         $book->save();
 
         return \Redirect::to(route('books'));
-
     }
 
-    public function bookInfo($id){
-        $book = Books::where('id',$id)->first();
+    public function bookInfo($id)
+    {
+        $book = Books::where('id', $id)->first();
+
         return $book;
     }
 
-    public function editBook(Request $request){
+    public function editBook(Request $request)
+    {
         $this->validate($request, array(
             'name' => 'required|unique:books,name',
             'name' => 'required',
             'price' => 'required|integer',
             'number_of_copies' => 'required|integer|',
-            'id' => 'required'
+            'id' => 'required',
         ));
 
-        Books::where('id' , $request->id)->update(array(
+        Books::where('id', $request->id)->update(array(
             'name' => $request->name,
             'author' => $request->author,
             'price' => $request->price,
@@ -60,21 +61,18 @@ class BookController extends Controller
         return \Redirect::to(url('/book/'.$request->id));
     }
 
-    public function view($id){
-      $book = Books::where('id',$id)->first();
-      $borrows = \App\Borrows::where('book_id', $book->id)->take(5)->get();
+    public function view($id)
+    {
+        $book = Books::where('id', $id)->first();
+        $borrows = \App\Borrows::where('book_id', $book->id)->take(5)->get();
 
-      return \View::make('books.view')
-      ->with('book',$book)
-      ->with('borrows',$borrows);
-
+        return \View::make('books.view')
+      ->with('book', $book)
+      ->with('borrows', $borrows);
     }
 
-
-
-
-    public function deleteBook($id){
-      return \View::make('books.delete')->with('id',$id);
+    public function deleteBook($id)
+    {
+        return \View::make('books.delete')->with('id', $id);
     }
-
 }
