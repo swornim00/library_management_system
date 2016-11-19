@@ -24,6 +24,9 @@ class Borrows extends Model
         $issue_interval = \DB::table('libraries')->get()->first()->issue_interval;
         $days_left = $issue_interval - $today->diffInDays($issued);
 
+        if ($this->cleared == true) {
+            return 'Cleared';
+        }
         if ($days_left <= 0) {
             return 'Charging Fine';
         }

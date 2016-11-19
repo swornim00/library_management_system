@@ -38,7 +38,7 @@ function closeModal(){
 
 function deleteModal(id,item){
 
-  $.get('{{url("/")}}//modal/delete/'+item+'/'+id,function(data){
+  $.get('{{url("/")}}/modal/delete/'+item+'/'+id,function(data){
     $('#def-modal-content').html(data);
   });
 

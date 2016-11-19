@@ -35,25 +35,50 @@
             </th>
           </tr>
           @foreach($borrows as $borrow)
-          <tr>
+          <tr @if($borrow->cleared == true) class="success" @elseif($borrow->status() == 'Charging Fine') class="warning" @endif>
               <td>
                 {{$borrow->id}}
               </td>
               <td>
-                {{$borrow->book['name']}}
+                <a href="{{url('/')}}/book/{{$borrow->book_id}}">{{$borrow->book['name']}}</a>
               </td>
               <td>
-              {{$borrow->borrowers['name']}}
+              <a href="{{url('/')}}/borrower/{{$borrow->borrower_id}}">{{$borrow->borrowers['name']}}</a>
               </td>
               <td>
-              <span class="label label-danger">{{$borrow->status()}}</span>
+                @if($borrow->status() == 'Cleared')
+
+                <span class="label label-success">{{$borrow->status()}}</span>
+
+                @elseif($borrow->status() == 'Charging Fine')
+
+                <span class="label label-warning">{{$borrow->status()}}</span>
+
+                @else
+                <span class="label label-danger">{{$borrow->status()}}</span>
+
+                @endif
+
               </td>
               <td>
                 {{$borrow->fine()}}
               </td>
               <td>
-                <button class="btn btn-danger">Lost</button>
-                <button class="btn btn-success">Clear</button>
+                <button class="btn btn-danger">
+                  @if($borrow->lost == true)
+                    Revert Loss
+                  @else
+                    Lost
+                  @endif
+                  </button>
+
+                <button class="btn btn-success">
+                @if($borrow->cleared == false)
+                  Clear
+                @else
+                  Unclear
+                @endif
+                </button>
                 <button class="btn btn-warning">Charge Fine</button>
 
               </td>

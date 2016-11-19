@@ -13,6 +13,7 @@
         <label>Author's Name: </label> {{$book->author}}<br>
         <label>Book's Price: </label> Rs. {{$book->price}}<br>
         <label>Number Of Copies: </label> {{$book->number_of_copies}}<br>
+        <label>Available Copies: </label> {{$book->copies_available()}}<br />
         <label>Total Number Of Borrows: </label> {{$book->borrows}}<br>
 
     </div>

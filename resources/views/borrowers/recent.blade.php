@@ -8,7 +8,7 @@
 
         @foreach ($borrowers as $borrower)
         <tr>
-          <td><a href="{{url('/')}}/borrowers/{{$borrower->id}}">{{$borrower->name}}</a></td>
+          <td><a href="{{url('/')}}/borrower/{{$borrower->id}}">{{$borrower->name}}</a></td>
             <td>{{$borrower->contact_number}}</td>
             <td>{{$borrower->fine}}</td>
 
