@@ -32,9 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('borrows', 'BorrowController@index');
     Route::get('lend', 'BorrowController@lendView');
     Route::post('lend', 'BorrowController@lend');
-    Route::post('clear', 'BorrowController@clear');
-    Route::post('lost', 'BorrowController@lost');
-    Route::post('fine_charged', 'BorrowController@fine_charged');
+    Route::post('borrow/clear/{id}', 'BorrowController@clear');
+    Route::post('borrow/unclear/{id}', 'BorrowController@unclear');
+    Route::post('borrow/lost/{id}', 'BorrowController@lost');
+    Route::post('borrow/rev_loss/{id}', 'BorrowController@rev_loss');
 
     Route::get('settings', 'SiteController@settings')->name('settings');
     Route::post('settings', 'SiteController@settings_update')->name('settings.update');

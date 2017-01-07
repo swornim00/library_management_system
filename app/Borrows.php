@@ -9,7 +9,7 @@ class Borrows extends Model
 {
     public function borrowers()
     {
-        return $this->hasOne('\App\Borrowers', 'id');
+        return $this->hasOne('\App\Borrowers', 'id','borrower_id');
     }
 
     public function book()
@@ -24,13 +24,16 @@ class Borrows extends Model
         $issue_interval = \DB::table('libraries')->get()->first()->issue_interval;
         $days_left = $issue_interval - $today->diffInDays($issued);
 
+        if ($this->lost == 1){
+            return 'Lost';
+        }
+        
         if ($this->cleared == true) {
             return 'Cleared';
         }
         if ($days_left <= 0) {
             return 'Charging Fine';
         }
-
         return $days_left.' Days Left';
     }
 

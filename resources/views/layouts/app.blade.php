@@ -17,6 +17,10 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/jquery/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+
 </head>
 
 <div class="modal fade" id="def-modal">
@@ -127,15 +131,13 @@ function deleteModal(id,item){
         padding:20px;
       }
       .footer-text{
-        font-weight: 400;
+        color:white;
+        font-weight:700;
+
       }
     </style>
     <!-- Scripts -->
 
-    <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/jquery/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/functions.js')}}"></script>
     <script>
     function showProfile(){
         $.get('{{url("/")}}/profile',function(data){
@@ -149,3 +151,8 @@ function deleteModal(id,item){
     </script>
 </body>
 </html>
+<style>
+body{
+    background-image:url('{{url("/")}}/assets/images/Books.jpg');
+}
+</style>

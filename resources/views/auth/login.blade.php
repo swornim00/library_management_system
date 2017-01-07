@@ -5,9 +5,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-5 col-md-offset-3" style="margin-top:10%">
             <div class="panel panel-default">
-                <div class="panel-heading">Login to SchooPhile Library Mangement System</div>
+                <div class="panel-heading"><h3><strong>Login to SchooPhile LiMS</strong></h3></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -64,4 +64,5 @@
         </div>
     </div>
 </div>
+
 @endsection

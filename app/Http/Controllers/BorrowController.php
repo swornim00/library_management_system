@@ -9,9 +9,22 @@ use App\Books;
 
 class BorrowController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $borrows = Borrows::OrderBy('id', 'desc')->paginate(10);
+        $mode = $request->mode;
+
+        if($mode == "lost")
+        {
+            $borrows = Borrows::OrderBy('id', 'desc')->where('lost',1)->paginate(10);
+
+        }elseif($mode == 'cleared'){
+            $borrows = Borrows::OrderBy('id', 'desc')->where('cleared',1)->paginate(10);
+
+        }else{
+
+            $borrows = Borrows::OrderBy('id', 'desc')->paginate(10);
+
+        }
 
         return \View::make('borrows.index')
         ->with('borrows', $borrows);
@@ -42,5 +55,25 @@ class BorrowController extends Controller
         $borrow->save();
 
         return \Redirect::to('borrows');
+    }
+
+    public function clear($id)
+    {
+        Borrows::where('id',$id)->update(array('cleared' => 1));
+    }
+
+    public function unclear($id)
+    {
+        Borrows::where('id',$id)->update(array('cleared' => 0));
+    }
+
+    public function lost($id)
+    {
+        Borrows::where('id',$id)->update(array('lost' => 1));
+    }
+
+    public function rev_loss($id)
+    {
+        Borrows::where('id',$id)->update(array('lost' => 0));
     }
 }
