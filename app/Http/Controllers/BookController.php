@@ -64,11 +64,17 @@ class BookController extends Controller
     public function view($id)
     {
         $book = Books::where('id', $id)->first();
+        if($book){
+
         $borrows = \App\Borrows::where('book_id', $book->id)->paginate(5);
 
         return \View::make('books.view')
       ->with('book', $book)
       ->with('borrows', $borrows);
+  }else{
+      return \Redirect::to('/');
+
+  }
     }
 
     public function deleteBook($id)

@@ -151,8 +151,3 @@ function deleteModal(id,item){
     </script>
 </body>
 </html>
-<style>
-body{
-    background-image:url('{{url("/")}}/assets/images/Books.jpg');
-}
-</style>

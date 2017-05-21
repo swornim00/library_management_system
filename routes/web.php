@@ -16,6 +16,8 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
 Route::get('contact_us', 'SiteController@contact_us');
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/search/books/byName','SearchController@searchBooks');
+
     Route::get('/', 'SiteController@index')->name('home');
     Route::get('/profile', 'SiteController@profile')->name('profile');
 
@@ -43,4 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/modal/delete/{db}/{id}', 'SiteController@delete');
     Route::post('delete/', 'SiteController@deleteDo')->name('delete');
+
+
 });
