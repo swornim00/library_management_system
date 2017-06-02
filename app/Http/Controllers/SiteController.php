@@ -68,7 +68,7 @@ class SiteController extends Controller
         'name' => $request->name,
         'address' => $request->address,
         'issue_interval' => $request->issue_interval,
-        'fine_amount' => $request->fien_amount,
+        'fine_amount' => $request->fine_amount,
         'admin_email' => $request->admin_email,
       ));
 
