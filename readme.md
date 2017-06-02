@@ -48,6 +48,8 @@ Now Run the server
 
 The server will be live on localhost:8000
 
+and you can see the login email from your database and password is 'secret'. 
+
 # How to contribute
 
 * Fork The Repo
