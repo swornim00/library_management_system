@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title') - SchoolPhile Library Management System</title>
+    <title>@yield('title') - SchooPhile Library Management System</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -123,7 +123,7 @@ function deleteModal(id,item){
     <div class="footer">
       <center>
         <hr />
-        <p class="footer-text">Copyright &copy; SchooPhile Tech 2016</p>
+        <p class="footer-text">Copyright &copy; Swornim Labs 2016 - 2017</p>
       </center>
     </div>
     <style>
